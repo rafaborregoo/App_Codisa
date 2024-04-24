@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.5/main.min.css"> <!-- FullCalendar CSS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.5/main.min.js"></script> <!-- FullCalendar JavaScript -->
+    <title>Panel de Administrador - ACODEM</title>
+</head>
+<body>
+
+    <!-- Barra de navegación para administrador -->
+    <header>
+        <nav class="menu-bar">
+            <div class="logo">
+                <span class="logo-acodem">ACODEM</span>
+                <span class="tagline">Asociación Cordobesa de Esclerosis Múltiple</span>
+            </div>
+            <ul>
+                <li><a href="#usuarios">Usuarios</a></li> <!-- Gestión de usuarios -->
+                <li><a href="#citas">Citas</a></li> <!-- Gestión de citas -->
+                <li><a href="#especialistas">Especialistas</a></li> <!-- Gestión de especialistas -->
+                <li><a href="#informes">Informes</a></li> <!-- Informes y estadísticas -->
+                <li><a href="#configuracion">Configuración</a></li> <!-- Configuraciones del sistema -->
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Diseño de cuadrícula para la distribución de las secciones -->
+    <div class="main-grid">
+        <!-- Panel para la gestión de usuarios -->
+        <div class="admin-panel" id="usuarios">
+            <h2>Gestión de Usuarios</h2>
+            <form id="form-agregar-usuario">
+                <label for="nombre">Nombre:</label>
+                <input type="text" id="nombre" name="nombre" required>
+        
+                <label for="correo">Correo Electrónico:</label>
+                <input type="email" id="correo" name="correo" required>
+        
+                <label for="rol">Rol:</label>
+                <select id="rol" name="rol">
+                    <option value="usuario">Usuario</option>
+                    <option value="administrador">Administrador</option>
+                </select>
+        
+                <button type="submit" class="btn-primary">Agregar Usuario</button>
+            </form>
+        
+        </div>
+        <!-- Botón para mostrar/ocultar la tabla de usuarios -->
+        <button id="boton-mostrar-usuarios" class="btn-primary">Mostrar Usuarios</button>
+
+        <!-- Panel para la tabla de usuarios (inicialmente oculto) -->
+        <div id="panel-usuarios" style="display: none;">
+            <h3>Usuarios Registrados</h3>
+            <table id="tabla-usuarios">
+                <thead>
+                    <tr>
+                        <th>Nombre</th>
+                        <th>Correo Electrónico</th>
+                        <th>Rol</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Se llenará dinámicamente con datos de Firestore -->
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Panel para la gestión de citas -->
+        <div class="admin-panel" id="citas">
+            <h2>Gestión de Citas</h2>
+            <ul>
+                <li>Ver todas las citas</li>
+                <li>Crear nueva cita</li>
+                <li>Reprogramar o cancelar citas</li>
+                <!-- Otras opciones para la gestión de citas -->
+            </ul>
+        </div>
+
+        <!-- Panel para la gestión de especialistas -->
+        <div class="admin-panel" id="especialistas">
+            <h2>Gestión de Especialistas</h2>
+            <ul>
+                <li>Agregar nuevo especialista</li>
+                <li>Ver lista de especialistas</li>
+                <!-- Otras opciones para la gestión de especialistas -->
+            </ul>
+        </div>
+
+        <!-- Panel para informes y estadísticas -->
+        <div class="admin-panel" id="informes">
+            <h2>Informes y Estadísticas</h2>
+            <ul>
+                <li>Ver informes de citas</li>
+                <li>Estadísticas de uso</li>
+                <!-- Otras opciones para informes y estadísticas -->
+            </ul>
+        </div>
+
+        <!-- Panel para configuraciones del sistema -->
+        <div class="admin-panel" id="configuracion">
+            <h2>Configuración del Sistema</h2>
+            <ul>
+                <li>Ajustar horarios de apertura</li>
+                <li>Configuraciones de seguridad</li>
+                <!-- Otras opciones para configuraciones generales -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2024 ACODEM. Todos los derechos reservados.</p>
+        <p><a href="#contacto">Contacto</a> | <a href="#politica-de-privacidad">Política de Privacidad</a></p>
+    </footer>
+
+    <!-- Configuración de FullCalendar -->
+    <script>
+        import { obtenerUsuarios } from './usuarios.js'; // Importar la función para obtener usuarios
+
+        // Alternar visibilidad de la tabla de usuarios
+        document.getElementById('boton-mostrar-usuarios').addEventListener('click', function () {
+            const panelUsuarios = document.getElementById('panel-usuarios');
+            const tablaUsuarios = document.getElementById('tabla-usuarios').querySelector('tbody');
+
+            if (panelUsuarios.style.display === 'none') { // Si el panel está oculto
+                panelUsuarios.style.display = 'block'; // Mostrar el panel
+                tablaUsuarios.innerHTML = ''; // Limpiar contenido actual
+                obtenerUsuarios().then((usuarios) => {
+                    usuarios.forEach((usuario) => {
+                        const fila = document.createElement('tr');
+                        fila.innerHTML = `
+                            <td>${usuario.nombre}</td>
+                            <td>${usuario.correo}</td>
+                            <td>${usuario.rol}</td>
+                        `;
+                        tablaUsuarios.appendChild(fila); // Añadir fila a la tabla
+                    });
+                });
+            } else { // Si el panel está visible
+                panelUsuarios.style.display = 'none'; // Ocultar el panel
+            }
+        });
+    </script>
+
+</body>
+</html>

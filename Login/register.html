@@ -18,8 +18,7 @@
 
     <div class="registration-container">
         <h2>Registro</h2>
-        <form action="/submit-registration" method="post">
-            <!-- Campos del formulario de registro -->
+        <form id="form-registro">
             <label for="nombre">Nombre:</label>
             <input type="text" id="nombre" name="nombre" required>
 
@@ -36,9 +35,42 @@
             <input type="password" id="confirm-password" name="confirm-password" required>
 
             <button type="submit" class="btn-primary">Registrar</button>
-            <p>¿Ya tienes una cuenta? <a href="login.html">Inicia sesión</a></p>
+            <p>¿Ya tienes una cuenta? <a href="login.html">Iniciar Sesión</a></p> <!-- Enlace para iniciar sesión -->
         </form>
     </div>
+
+    <!-- Manejo del evento de envío para registro -->
+    <script>
+        import { registrarUsuario } from './scripts.js'; // Importar función para registrar usuario
+
+        document.getElementById('form-registro').addEventListener('submit', function (e) {
+            e.preventDefault(); // Prevenir el comportamiento por defecto
+
+            const nombre = document.getElementById('nombre').value;
+            const apellidos = document.getElementById('apellidos').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirm-password').value;
+
+            // Verificar si las contraseñas coinciden
+            if (password !== confirmPassword) {
+                alert('Las contraseñas no coinciden.');
+                return;
+            }
+
+            // Llamar a la función para registrar usuario
+            registrarUsuario(email, password)
+                .then((userCredential) => {
+                    alert('Registro exitoso');
+                    // Aquí puedes redirigir al usuario después del registro exitoso
+                    window.location.href = 'login.html'; // Redirigir a la página de inicio de sesión
+                })
+                .catch((error) => {
+                    console.error('Error al registrar usuario:', error);
+                    alert('Error al registrar usuario: ' + error.message);
+                });
+        });
+    </script>
 
 </body>
 </html>

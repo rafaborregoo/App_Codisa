@@ -176,3 +176,44 @@ button.btn-primary:hover {
         margin: auto;
     }
 }
+
+.main-grid {
+    display: grid; /* Usamos grid para crear la estructura */
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas iguales */
+    gap: 20px; /* Espacio entre las secciones */
+    padding: 20px; /* Espaciado dentro del grid */
+}
+
+/* Estilos para los paneles */
+.calendar-panel,
+.announcements-panel,
+.search-appointments-panel {
+    background-color: var(--color-secundario); /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 1px solid var(--border-color); /* Borde gris */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sutil sombra */
+    padding: 20px; /* Espaciado interno */
+}
+
+/* Estilos adicionales para los textos y botones */
+button {
+    background-color: var(--color-primario); /* Color primario para los botones */
+    color: white;
+    padding: 10px;
+    border-radius: 5px; /* Bordes redondeados */
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8; /* Efecto hover */
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primario);
+}
+
+a:hover {
+    text-decoration: underline;
+}
