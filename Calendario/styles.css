@@ -1,0 +1,6 @@
+#calendar-container {
+    width: 600px; /* Ancho del contenedor */
+    height: 800px; /* Altura del contenedor */
+    float: left; /* Alinear a la izquierda */
+    margin-right: 20px; /* Espacio entre el calendario y otros elementos */
+  }
