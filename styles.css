@@ -1,0 +1,219 @@
+:root {
+    --color-primario: #f52d5c;  /* Sustituye #HEX con el color primario de acodem.es */
+    --color-secundario: #ffffff; /* Sustituye #HEX con el color secundario */
+    --color-texto: #000000; /* Color de texto que contrasta bien con los fondos */
+    --border-color: #cccccc;
+    --border-color-register: #f52d5c;
+}
+
+body {
+    background-color: var(--color-primario);
+    color: var(--color-texto);
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    margin: 0;
+    padding-top: 70px;
+    height: calc(100vh - 70px);
+    margin: 0;
+}
+
+.login-container {
+    background-color: var(--color-secundario);
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 600px; /* Establece un ancho máximo para el contenedor */
+    min-width: 550px; /* Establece un ancho mínimo para garantizar la legibilidad */
+    width: 80%; /* Ancho relativo al elemento contenedor, en este caso el body */
+    margin-top: 20px; /* Asegúrate de tener un margen en la parte superior */
+}
+
+input[type="text"], input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    display: inline-block;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+}
+
+button {
+    background-color: #444; /* Color de fondo del botón */
+    color: white; /* Color del texto del botón */
+    padding: 10px; /* Espaciado interno del botón */
+    margin-bottom: 10px; /* Espacio debajo del botón */
+    border: none; /* No border for a flat design */
+    cursor: pointer; /* Cursor en forma de mano que indica un elemento clickeable */
+    width: calc(100% - 20px); /* El ancho del botón se calcula para ajustar el padding */
+}
+
+
+button:hover {
+    opacity: 0.8;
+}
+
+.checkbox-container{
+    margin: 10px 0;
+}
+
+a {
+    color: var(--color-primario);
+    text-decoration: none;
+}
+
+a:hover{
+    text-decoration: underline;
+}
+
+.menu-bar{
+    background-color: #ffffff;
+    padding: 10px 20px; /*Espaciado dentro de la barra*/
+    width: 100%;
+    box-sizing: border-box;
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1000;
+}
+
+.logo{
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.logo-acodem{
+    color: var(--color-primario);
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.tagline{
+    color: var(--color-primario);
+    font-size: 14px;
+    font-weight: normal;
+}
+
+.registration-container {
+    background-color: var(--color-secundario); /* Fondo blanco */
+    padding: 20px;
+    border-radius: 5px;
+    border: 1px solid var(--border-color);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    max-width: 500px;
+    min-width: 450px;
+    width: 80%;
+    margin-top: 20px; /* Ajuste para no solapar con la barra de navegación fija */
+    margin-bottom: 20px; /* Espacio adicional en la parte inferior */
+}
+
+input[type="text"],
+input[type="password"],
+input[type="email"],
+button.btn-primary {
+    width: calc(100% - 20px);
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid var(--border-color);
+    box-sizing: border-box;
+}
+
+button.btn-primary {
+    background-color: var(--color-primario); /* Botón con color primario */
+    color: white;
+    border: none;
+}
+
+button.btn-primary:hover {
+    opacity: 0.8; /* Efecto al pasar el ratón */
+}
+
+
+.button-like {
+    display: inline-block; /* Hace que el enlace se comporte como un elemento en bloque */
+    background-color: #444; /* Igual que tus otros botones */
+    color: white; /* Igual que tus otros botones */
+    padding: 14px 20px; /* Igual que tus otros botones */
+    text-align: center; /* Centra el texto dentro del "botón" */
+    text-decoration: none; /* Elimina el subrayado del texto */
+    margin: 8px 0; /* Igual que tus otros botones */
+    border: none; /* Igual que tus otros botones */
+    cursor: pointer; /* Igual que tus otros botones */
+    width: calc(100% - 40px); /* Igual que tus otros botones */
+    box-sizing: border-box; /* Para que el padding no afecte el ancho total */
+    border-radius: 5px; /* Igual que tus otros botones */
+}
+
+.button-like:hover {
+    opacity: 0.8; /* Igual que tus otros botones */
+}
+
+
+/* Responsive Design */
+@media (max-width: 600px) {
+    .login-container {
+        width: 90%; /* Aumenta el ancho para pantallas pequeñas */
+        margin-top: 60px;
+    }
+
+    input[type="text"], input[type="password"] {
+        padding: 10px;
+    }
+
+    button {
+        padding: 12px 20px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 1024px) {
+    .login-container {
+        width: 50%;
+        margin: auto;
+    }
+}
+
+.main-grid {
+    display: grid; /* Usamos grid para crear la estructura */
+    grid-template-columns: repeat(3, 1fr); /* Tres columnas iguales */
+    gap: 20px; /* Espacio entre las secciones */
+    padding: 20px; /* Espaciado dentro del grid */
+}
+
+/* Estilos para los paneles */
+.calendar-panel,
+.announcements-panel,
+.search-appointments-panel {
+    background-color: var(--color-secundario); /* Fondo blanco */
+    border-radius: 10px; /* Bordes redondeados */
+    border: 1px solid var(--border-color); /* Borde gris */
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1); /* Sutil sombra */
+    padding: 20px; /* Espaciado interno */
+}
+
+/* Estilos adicionales para los textos y botones */
+button {
+    background-color: var(--color-primario); /* Color primario para los botones */
+    color: white;
+    padding: 10px;
+    border-radius: 5px; /* Bordes redondeados */
+    border: none;
+    cursor: pointer;
+}
+
+button:hover {
+    opacity: 0.8; /* Efecto hover */
+}
+
+a {
+    text-decoration: none;
+    color: var(--color-primario);
+}
+
+a:hover {
+    text-decoration: underline;
+}

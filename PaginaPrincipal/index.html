@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../styles.css">
+    <title>Página Principal - ACODEM</title>
+    <!-- FullCalendar CSS -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.5/main.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/6.1.5/main.min.js"></script>
+</head>
+<body>
+
+    <!-- Barra de navegación -->
+    <header>
+        <nav class="menu-bar">
+            <div class="logo">
+                <span class="logo-acodem">ACODEM</span>
+                <span class="tagline">Asociación Cordobesa de Esclerosis Múltiple</span>
+            </div>
+            <ul>
+                <li><a href="#calendario">Calendario</a></li>
+                <li><a href="#anuncios">Anuncios</a></li>
+                <li><a href="#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Diseño de cuadrícula para la distribución de las secciones -->
+    <div class="main-grid">
+        <!-- Panel para el calendario -->
+        <div class="calendar-panel" id="calendario"> <!-- Corregir ID -->
+            <h2>Calendario de Citas</h2>
+            <div id="calendar"></div> <!-- Corregir ID para el calendario -->
+        </div>
+
+        <!-- Panel para anuncios o noticias -->
+        <div class="announcements-panel" id="anuncios">
+            <h2>Anuncios</h2>
+            <!-- Ejemplo de anuncios -->
+            <ul>
+                <li>Nuevo servicio de fisioterapia</li>
+                <li>Evento de recaudación de fondos</li>
+                <!-- Más anuncios o noticias -->
+            </ul>
+        </div>
+
+        <!-- Panel para buscar citas -->
+        <div class="search-appointments-panel" id="buscar-citas">
+            <h2>Buscar Citas</h2>
+            <form>
+                <label for="especialista">Especialista:</label>
+                <input type="text" id="especialista" name="especialista">
+
+                <label for="fecha">Fecha:</label>
+                <input type="date" id="fecha" name="fecha">
+
+                <button type="submit" class="btn-primary">Buscar</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- Pie de página -->
+    <footer>
+        <p>© 2024 ACODEM. Todos los derechos reservados.</p>
+        <p><a href="#contacto">Contacto</a> | <a href="#politica-de-privacidad">Política de Privacidad</a></p>
+    </footer>
+
+    <!-- Configuración de FullCalendar -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var calendarEl = document.getElementById('calendar'); // Asegúrate de que este ID coincida con el del HTML
+        
+            var calendar = new FullCalendar.Calendar(calendarEl, {
+                initialView: 'dayGridMonth',
+                events: [
+                    { title: 'Cita con Dr. González', start: '2024-05-03' },
+                    { title: 'Cita con Dra. Pérez', start: '2024-05-05' }
+                ]
+            });
+        
+            calendar.render(); // Renderiza el calendario
+        });
+        </script>
+</body>
+</html>
